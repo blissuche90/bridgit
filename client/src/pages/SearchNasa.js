@@ -32,16 +32,7 @@ const SearchNasa = () => {
     }
 
     try {
-      const res = await refetch({ q: searchInput, from: 1 });
-      console.log("returned data ===========>", res);
-      if (loading) return null;
-      if (error) throw new Error(`something went wrong! Error! ${error}`);
-
-      setSearchedImages(res.data.items);
-      console.log("searched Books data ===========>", searchedImages);
-      setPageCount(10);
-      console.log("page count ===========>", pageCount);
-      setSearchInput("");
+      await handleFetch(1);
     } catch (err) {
       console.error(err);
     }
@@ -49,12 +40,11 @@ const SearchNasa = () => {
   const handleFetch = async (page) => {
     try {
       const res = await refetch({ q: searchInput, from: page });
-      console.log("returned data ===========>", res);
       if (loading) return null;
       if (error) throw new Error(`something went wrong! Error! ${error}`);
 
       setSearchedImages(res.data.items);
-      console.log("searched Books data ===========>", searchedImages);
+      setPageCount(searchedImages.length);
       setSearchInput("");
     } catch (err) {
       console.error(err);
@@ -62,7 +52,6 @@ const SearchNasa = () => {
   };
   const handlePageChange = (selectedObject) => {
     setcurrentPage(selectedObject.selected);
-    console.log("page======>",selectedObject.selected)
     setcurrentPage(selectedObject.selected);
     handleFetch(currentPage);
   };
