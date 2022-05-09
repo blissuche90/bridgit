@@ -37,7 +37,6 @@ const ImageDataType = new GraphQLObjectType({
 				location: { type: GraphQLNonNull(GraphQLString) },
 				nasa_id: { type: GraphQLNonNull(GraphQLString) },
 				date_created: { type: GraphQLNonNull(GraphQLString) },
-				//"keywords": ["Hangar M Annex", " Hangar M", " Hangar", " HAER", " Historic Properties", " ksc-env-itr3850-2017-hangar-m", " ksc-env-hangar-m"],
 				media_type: { type: GraphQLNonNull(GraphQLString) },
 				description: { type: GraphQLNonNull(GraphQLString) }
   })
